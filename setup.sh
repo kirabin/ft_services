@@ -17,7 +17,6 @@ docker build -t nginx_image ./srcs/nginx
 
 # creates deployments according to yaml files
 # kubectl create -f ./srcs
-
 kubectl apply -f ./srcs/nginx.yaml
 kubectl apply -f ./srcs/metallb.yaml
 # difference between apply and create?

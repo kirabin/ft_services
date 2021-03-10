@@ -9,12 +9,13 @@ RUN		mkdir www/
 RUN		mkdir run/nginx
 RUN		openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -subj '/CN=localhost' -nodes
 
-COPY	nginx.conf ./etc/nginx/nginx.conf
-COPY	index.html /www/index.html
-
+COPY	nginx.conf	./etc/nginx/nginx.conf
+COPY	index.html	./www/index.html
+COPY	setup.sh	./
+RUN		chmod +x	setup.sh
 
 EXPOSE	80 443
-CMD		["nginx", "-g", "daemon off;"]
+CMD		./setup.sh
 
 
 

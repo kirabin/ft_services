@@ -6,7 +6,7 @@
 #    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/25 11:41:22 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/08 14:18:50 by dmilan           ###   ########.fr        #
+#    Updated: 2021/03/10 14:09:57 by dmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ b_install:
 
 m_install:
 	rm -rf ~/.minikube
-	rm -rf /goinfre/.minikube
+	rm -rf ~/goinfre/.minikube
 	minikube delete
 	brew remove minikube
 	brew install minikube
@@ -25,9 +25,8 @@ m_install:
 	brew unlink minikube
 	brew link minikube
 	mkdir ~/.minikube
-	mv ~/.minikube /goinfre
-	ln -s /goinfre/.minikube ~/.minikube
-	minikube start --vm-driver=virtualbox
+	mv ~/.minikube ~/goinfre
+	ln -s ~/goinfre/.minikube ~/.minikube
 
 m_start:
 	bash setup.sh
