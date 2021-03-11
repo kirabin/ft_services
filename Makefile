@@ -6,7 +6,7 @@
 #    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/25 11:41:22 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/10 14:09:57 by dmilan           ###   ########.fr        #
+#    Updated: 2021/03/11 14:26:42 by dmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ m_install:
 	cd ~
 	brew unlink minikube
 	brew link minikube
-	mkdir ~/.minikube
+	# mkdir ~/.minikube
 	mv ~/.minikube ~/goinfre
 	ln -s ~/goinfre/.minikube ~/.minikube
 
