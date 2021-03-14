@@ -6,7 +6,10 @@ metadata:
     app: wordpress
 spec:
   ports:
-    - port: 80
+    - port: 5050
+      targetPort: 5050
+      protocol: TCP
+      name: wordpress
   selector:
     app: wordpress
     tier: frontend
@@ -45,18 +48,16 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:4.8-apache
+      - image: wordpress_image
+        imagePullPolicy: Never
         name: wordpress
-        env:
-        - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
-        - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass
-              key: password
+        # env:
+        # - name: WORDPRESS_DB_HOST
+        #   value: mysql
+        # - name: WORDPRESS_DB_PASSWORD
+        #   value: pass
         ports:
-        - containerPort: 80
+        - containerPort: 5050
           name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
