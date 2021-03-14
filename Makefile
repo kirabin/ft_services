@@ -6,7 +6,7 @@
 #    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/25 11:41:22 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/11 14:26:42 by dmilan           ###   ########.fr        #
+#    Updated: 2021/03/12 11:50:06 by dmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ m_install:
 	# mkdir ~/.minikube
 	mv ~/.minikube ~/goinfre
 	ln -s ~/goinfre/.minikube ~/.minikube
+	minikube dashboard &
 
 m_start:
 	bash setup.sh
-
 
 other_commands:
 	kubectl create <deployment> <deployment_name> --image=k8s.gcr.io/echoserver:1.4

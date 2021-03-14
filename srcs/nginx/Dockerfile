@@ -1,7 +1,7 @@
 FROM	alpine:3.12
 
 RUN		apk update
-RUN		apk add nginx openssl
+RUN		apk add nginx openssl supervisor
 
 
 RUN		mkdir www/

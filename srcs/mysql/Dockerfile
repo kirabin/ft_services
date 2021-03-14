@@ -1,7 +1,7 @@
 FROM	alpine:3.12
 
 RUN		apk update
-RUN		apk add --no-cache mysql mysql-client openrc
+RUN		apk add --no-cache mysql mysql-client supervisor
 # --no-cache is used to lower container size
 
 
@@ -9,7 +9,13 @@ RUN		apk add --no-cache mysql mysql-client openrc
 COPY	create_db	./
 COPY	my.cnf		./etc/
 COPY	setup.sh	./
+
 RUN		chmod +x	setup.sh
+RUN		mkdir		/run/mysqld
+# RUN		chmod +x	/run/mysqld
+
+
+
 CMD		./setup.sh
 
 

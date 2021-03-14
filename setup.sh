@@ -11,7 +11,7 @@ WHITE="\e[97m"
 minikube start --vm-driver=virtualbox
 minikube addons enable metallb
 
-sh re.sh
+./re.sh
 
 
 
