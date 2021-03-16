@@ -6,7 +6,7 @@
 #    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/25 11:41:22 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/12 11:50:06 by dmilan           ###   ########.fr        #
+#    Updated: 2021/03/16 11:47:33 by dmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ m_install:
 
 m_start:
 	bash setup.sh
+	minikube dashboard
 
 other_commands:
 	kubectl create <deployment> <deployment_name> --image=k8s.gcr.io/echoserver:1.4

@@ -1,2 +1,3 @@
-# php-fpm -F -R
-nginx -g "daemon off;"
+# start telegraph
+
+# start supervisor

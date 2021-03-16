@@ -15,7 +15,7 @@ RUN		mkdir		/run/mysqld
 # RUN		chmod +x	/run/mysqld
 
 
-
+EXPOSE	3306
 CMD		./setup.sh
 
 

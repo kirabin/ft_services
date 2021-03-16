@@ -10,6 +10,7 @@ WHITE="\e[97m"
 
 minikube start --vm-driver=virtualbox
 minikube addons enable metallb
+minikube addons enable storage-provisioner
 
 ./re.sh
 
