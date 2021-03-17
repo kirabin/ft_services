@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress
+  name: wordpress-service
   labels:
     app: wordpress
 spec:
@@ -31,7 +31,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-deployment
   labels:
     app: wordpress
 spec:
@@ -51,6 +51,11 @@ spec:
       - image: wordpress_image
         imagePullPolicy: Never
         name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: mysql
+        - name: WORDPRESS_DB_PASSWORD
+          value: 'password'
         ports:
         - containerPort: 5050
           name: wordpress

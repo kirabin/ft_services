@@ -26,12 +26,18 @@ $i = 0;
  * First server
  */
 $i++;
-/* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
-/* Server parameters */
-$cfg['Servers'][$i]['host'] = 'localhost';
+$cfg['Servers'][$i]['ssl_verify'] = false;
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['host'] = 'mysql';
+$cfg['Servers'][$i]['port'] = 3306;
+$cfg['Servers'][$i]['connect_type'] = 'tcp';
+$cfg['Servers'][$i]['user'] = 'wordpress';
+$cfg['Servers'][$i]['password'] = 'password';
 $cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['CheckConfigurationPermissions'] = false;
+
 
 /**
  * phpMyAdmin configuration storage settings.
