@@ -15,7 +15,7 @@ COPY	setup.sh	./
 RUN		chmod +x	setup.sh
 
 EXPOSE	80 443
-CMD		./setup.sh
+CMD		["/usr/bin/supervisord"]
 
 
 

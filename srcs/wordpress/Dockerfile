@@ -10,9 +10,7 @@ COPY	supervisord.conf	/etc/supervisord.conf
 COPY	nginx.conf			./etc/nginx/nginx.conf
 COPY	setup.sh 			./
 
-# download latest version of wordpress
 RUN		wget https://wordpress.org/latest.tar.gz
-# unarchive wordpress archive
 RUN		tar -xzvf latest.tar.gz && rm -rf latest.tar.gz
 RUN		mv wordpress		/var/www/wordpress
 COPY	wp-config.php		/var/www/wordpress

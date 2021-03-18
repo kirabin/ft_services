@@ -5,17 +5,18 @@ RUN		apk add --no-cache mysql mysql-client supervisor
 
 
 
-COPY	create_db	/
+COPY	create_wordpress_db.sql	/
 COPY	my.cnf		/etc/
 COPY	setup.sh	./
+COPY	supervisord.conf	/etc/supervisord.conf
 
 RUN		chmod +x	setup.sh
 RUN		mkdir		/run/mysqld
 RUN		chmod +x	/run/mysqld
 
 EXPOSE	3306
-# CMD		["/usr/bin/supervisord"]
-CMD		./setup.sh
+CMD		["/usr/bin/supervisord"]
+# CMD		./setup.sh
 
 
 # Links

@@ -5,11 +5,11 @@ kubectl delete -f ./srcs/mysql/mysql.yaml
 kubectl delete -f ./srcs/wordpress/wordpress.yaml
 kubectl delete -f ./srcs/phpmyadmin/phpmyadmin.yaml
 
-# eval $(minikube docker-env)
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.109:2376"
-export DOCKER_CERT_PATH="/Users/dmilan/.minikube/certs"
-export MINIKUBE_ACTIVE_DOCKERD="minikube"
+eval $(minikube docker-env)
+# export DOCKER_TLS_VERIFY="1"
+# export DOCKER_HOST="tcp://192.168.99.109:2376"
+# export DOCKER_CERT_PATH="/Users/dmilan/.minikube/certs"
+# export MINIKUBE_ACTIVE_DOCKERD="minikube"
 
 docker build -t nginx_image ./srcs/nginx
 docker build -t wordpress_image ./srcs/wordpress

@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-service
 spec:
+  type: ClusterIP
   ports:
     - port: 3306
       targetPort: 3306
+      protocol: TCP
   selector:
     app: mysql
 ---
@@ -25,7 +27,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-deployment
   labels:
     app: wordpress
 spec:
@@ -44,6 +46,8 @@ spec:
       containers:
       - image: mysql_image
         imagePullPolicy: Never
+        resources:
+          limits:
         name: mysql
         ports:
         - containerPort: 3306
