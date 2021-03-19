@@ -19,7 +19,6 @@ $cfg['blowfish_secret'] = '12345678876543211234567887654321';
 
 
 $i = 1;
-
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['host'] = 'mysql-service';
 $cfg['Servers'][$i]['port'] = 3306;

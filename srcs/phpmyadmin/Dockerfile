@@ -6,20 +6,17 @@ RUN		apk add php7-common php7-session php7-iconv php7-json php7-gd php7-curl php
 
 RUN		mkdir -p /run/nginx
 
-COPY	supervisord.conf	/etc/supervisord.conf
-COPY	nginx.conf			./etc/nginx/nginx.conf
-COPY	setup.sh			./
+COPY	supervisord.conf	/etc/
+COPY	nginx.conf			/etc/
 
 RUN		wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz
 RUN		tar -xzvf phpMyAdmin-5.0.4-english.tar.gz && rm -rf phpMyAdmin-5.0.4-english.tar.gz
 RUN		mv phpMyAdmin-5.0.4-english /var/www/phpmyadmin
 
-# RUN		chmod 777		/var/www/phpmyadmin
-COPY	./config.inc.php	/var/www/phpmyadmin
-RUN		chmod 644			/var/www/phpmyadmin/config.inc.php
+RUN		chmod 777			/var/www/phpmyadmin
+COPY	config.inc.php		/var/www/phpmyadmin/
 
 EXPOSE	5000
-RUN		chmod +x	setup.sh
 CMD		["/usr/bin/supervisord"]
 
 

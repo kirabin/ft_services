@@ -6,9 +6,8 @@ RUN		apk add php7-common php7-session php7-iconv php7-json php7-gd php7-curl php
 
 RUN		mkdir -p /run/nginx
 
-COPY	supervisord.conf	/etc/supervisord.conf
-COPY	nginx.conf			./etc/nginx/nginx.conf
-COPY	setup.sh 			./
+COPY	supervisord.conf	/etc/
+COPY	nginx.conf			/etc/nginx/
 
 RUN		wget https://wordpress.org/latest.tar.gz
 RUN		tar -xzvf latest.tar.gz && rm -rf latest.tar.gz
@@ -17,7 +16,6 @@ COPY	wp-config.php		/var/www/wordpress
 RUN		chmod 777			/var/www/wordpress
 
 EXPOSE	5050
-RUN		chmod +x	setup.sh
 CMD		["/usr/bin/supervisord"]
 
 

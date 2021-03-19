@@ -1,44 +1,40 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin-service
+  name: fpts-service
   annotations:
     metallb.universe.tf/allow-shared-ip: default
   labels:
-    app: phpmyadmin
+    app: fpts
 spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.99.100
-  ports:
-    - port: 5000
-      targetPort: 5000
-      protocol: TCP
   selector:
-    app: phpmyadmin
+    app: fpts
+  ports:
+    - protocol: TCP
+      port: 21
+      targetPort: 21
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin-deployment
-  labels:
-    app: phpmyadmin
+  name: fpts-deployment
 spec:
   selector:
     matchLabels:
-      app: phpmyadmin
-  strategy:
-    type: Recreate
+      app: fpts
+  replicas: 1
   template:
     metadata:
       labels:
-        app: phpmyadmin
-        tier: frontend
+        app: fpts
     spec:
       containers:
-      - image: phpmyadmin_image
+      - name: fpts
+        image: fpts_image
         imagePullPolicy: Never
-        name: phpmyadmin
         resources:
           limits:
         ports:
-        - containerPort: 5000
+        - containerPort: 21

@@ -2,17 +2,14 @@ FROM	alpine:3.12
 
 RUN		apk update
 RUN		apk add nginx openssl supervisor
+RUN		rc-update add vsftpd default
 
-
-RUN		mkdir www/
-# RUN	adduser -D -g 'www' www
 RUN		mkdir run/nginx
 RUN		openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -subj '/CN=localhost' -nodes
 
-COPY	nginx.conf	./etc/nginx/nginx.conf
-COPY	index.html	./www/index.html
-COPY	setup.sh	./
-RUN		chmod +x	setup.sh
+COPY	supervisord.conf	/etc/
+COPY	nginx.conf			/etc/nginx/
+COPY	index.html			/var/www/
 
 EXPOSE	80 443
 CMD		["/usr/bin/supervisord"]
