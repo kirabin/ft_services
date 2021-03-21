@@ -15,7 +15,7 @@ declare(strict_types=1);
  * This is needed for cookie based authentication to encrypt password in
  * cookie. Needs to be 32 chars long.
  */
-$cfg['blowfish_secret'] = '12345678876543211234567887654321';
+$cfg['blowfish_secret'] = '';
 
 
 $i = 1;
@@ -32,3 +32,4 @@ $cfg['CheckConfigurationPermissions'] = false;
 
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
+$cfg['TempDir'] = '/tmp/';

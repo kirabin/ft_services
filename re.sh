@@ -14,8 +14,10 @@ docker build -t mysql_image ./srcs/mysql
 docker build -t phpmyadmin_image ./srcs/phpmyadmin/
 # docker build -t ftps_image ./srcs/ftps/ && docker run --rm -it -p 21:21 ftps_image
 
-kubectl apply -f ./srcs/nginx/nginx.yaml
+docker images
+
 kubectl apply -f ./srcs/metallb/metallb.yaml
+kubectl apply -f ./srcs/nginx/nginx.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml
 kubectl apply -f ./srcs/wordpress/wordpress.yaml
 kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml

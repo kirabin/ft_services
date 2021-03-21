@@ -14,9 +14,9 @@ RUN		tar -xzvf phpMyAdmin-5.0.4-english.tar.gz && rm -rf phpMyAdmin-5.0.4-englis
 RUN		mv phpMyAdmin-5.0.4-english /var/www/phpmyadmin
 
 RUN		chmod 777			/var/www/phpmyadmin
-# RUN		mkdir -p 			/var/www/phpmyadmin/tmp
-# RUN		chmod 777			/var/www/phpmyadmin/tmp
 COPY	config.inc.php		/var/www/phpmyadmin/
+RUN		mkdir -p 			/var/www/phpmyadmin/tmp
+RUN		chmod 777			/var/www/phpmyadmin/tmp
 
 EXPOSE	5000
 CMD		["/usr/bin/supervisord"]
