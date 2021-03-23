@@ -9,7 +9,7 @@ COPY	supervisord.conf		/etc/
 
 RUN		mkdir			/run/mysqld
 RUN		chmod +x		/run/mysqld
-RUN		chown -R mysql	/run/mysqld
+# RUN		chown -R mysql	/run/mysqld
 
 EXPOSE 3306
 VOLUME	["/var/lib/mysql"]

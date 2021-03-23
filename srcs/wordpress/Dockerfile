@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM	alpine:3.12
 
 RUN		apk update
 RUN		apk add nginx openssl wget mysql mysql-client supervisor vim

@@ -1,40 +1,60 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fpts-service
+  name: ftps-service
   annotations:
     metallb.universe.tf/allow-shared-ip: default
   labels:
-    app: fpts
+    app: ftps
 spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.99.101
   selector:
-    app: fpts
+    app: ftps
   ports:
     - protocol: TCP
       port: 21
       targetPort: 21
+      name: ftps
+    - protocol: TCP
+      port: 20
+      targetPort: 20
+      name: ftp
+    - protocol: TCP
+      port: 20021
+      targetPort: 20021
+      name: ftp-min
+    - protocol: TCP
+      port: 20000
+      targetPort: 20000
+      name: ftp-max
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fpts-deployment
+  name: ftps-deployment
 spec:
   selector:
     matchLabels:
-      app: fpts
+      app: ftps
   replicas: 1
   template:
     metadata:
       labels:
-        app: fpts
+        app: ftps
     spec:
       containers:
-      - name: fpts
-        image: fpts_image
+      - name: ftps
+        image: ftps_image
         imagePullPolicy: Never
         resources:
           limits:
         ports:
         - containerPort: 21
+          name: ftps
+        - containerPort: 20
+          name: ftp
+        - containerPort: 20000
+          name: ftp-min
+        - containerPort: 20021
+          name: ftp-max

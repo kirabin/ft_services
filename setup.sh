@@ -7,7 +7,7 @@ CYAN="\e[96m"
 WHITE="\e[97m"
 
 
-minikube start --vm-driver=virtualbox
+minikube start --vm-driver=virtualbox --cpus=4
 minikube addons enable metallb
 minikube addons enable storage-provisioner
 
