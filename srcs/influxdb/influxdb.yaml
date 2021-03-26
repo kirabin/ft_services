@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: influx-service
+  labels:
+    app: tig
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8086
+      targetPort: 8086
+      protocol: TCP
+      name: default-http
+    - port: 8088
+      targetPort: 8088
+      protocol: TCP
+      name: rpc
+  selector:
+    app: tig
+    tier: influx
+---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: influx-pv
+#   labels:
+#     type: local
+# spec:
+#   storageClassName: fast
+#   capacity:
+#     storage: 500Mi
+#   accessModes:
+#     - ReadWriteOnce
+#   hostPath:
+#     path: "/var/lib/influx"
+#   claimRef:
+#     name: influx-pvc
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: influx-pv-claim
+#   labels:
+#     app: influx
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 500Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influx-deployment
+  labels:
+    app: tig
+spec:
+  selector:
+    matchLabels:
+      app: tig
+      tier: influx
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: tig
+        tier: influx
+    spec:
+      containers:
+      - image: influx_image
+        imagePullPolicy: Never
+        resources:
+          limits:
+        name: influx
+        ports:
+        - containerPort: 8806
+          name: default-http
+        - containerPort: 8808
+          name: rpc
+      #   volumeMounts:
+      #   - name: influx-pv
+      #     mountPath: "/var/lib/influx"
+      # volumes:
+      # - name: influx-pv
+      #   persistentVolumeClaim:
+      #     claimName: influx-pv-claim

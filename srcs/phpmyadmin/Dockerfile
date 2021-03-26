@@ -10,7 +10,8 @@ COPY	supervisord.conf	/etc/
 COPY	nginx.conf			/etc/nginx/
 
 RUN		wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz
-RUN		tar -xzvf phpMyAdmin-5.0.4-english.tar.gz && rm -rf phpMyAdmin-5.0.4-english.tar.gz
+#		I learned that -z flag is for unarchiving tarballs archived with gzip command
+RUN		tar -xzf phpMyAdmin-5.0.4-english.tar.gz && rm -rf phpMyAdmin-5.0.4-english.tar.gz
 RUN		mv phpMyAdmin-5.0.4-english /var/www/phpmyadmin
 
 RUN		chmod 777			/var/www/phpmyadmin
