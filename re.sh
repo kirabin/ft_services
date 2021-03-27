@@ -6,7 +6,7 @@ kubectl delete -f ./srcs/wordpress/wordpress.yaml
 kubectl delete -f ./srcs/phpmyadmin/phpmyadmin.yaml
 kubectl delete -f ./srcs/ftps/ftps.yaml
 kubectl delete -f ./srcs/influxdb/influxdb.yaml
-# kubectl delete -f ./srcs/telegraf/telegraf.yaml
+kubectl delete -f ./srcs/grafana/grafana.yaml
 
 eval $(minikube docker-env)
 
@@ -16,7 +16,8 @@ docker build -t mysql_image			./srcs/mysql
 docker build -t phpmyadmin_image	./srcs/phpmyadmin/
 docker build -t ftps_image			./srcs/ftps/
 docker build -t influx_image		./srcs/influxdb/
-# docker build -t telegraf_image		./srcs/telegraf/
+docker build -t grafana_image		./srcs/grafana/
+# docker run -it --rm grafana_image
 
 docker images
 
@@ -27,4 +28,4 @@ kubectl apply -f ./srcs/wordpress/wordpress.yaml
 kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f ./srcs/ftps/ftps.yaml
 kubectl apply -f ./srcs/influxdb/influxdb.yaml
-# kubectl apply -f ./srcs/telegraf/telegraf.yaml
+kubectl apply -f ./srcs/grafana/grafana.yaml
