@@ -13,5 +13,4 @@ COPY	telegraf.conf		/etc/telegraf/
 COPY	supervisord.conf	/etc/
 
 EXPOSE	3000
-# CMD		[ "sh" ]
 CMD		["/usr/bin/supervisord"]

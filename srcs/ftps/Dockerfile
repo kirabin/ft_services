@@ -2,7 +2,9 @@ FROM	alpine:3.12
 
 RUN		apk update
 RUN		apk add --no-cache vsftpd supervisor openssl
+RUN		apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
+COPY	telegraf.conf		/etc/telegraf/
 COPY	supervisord.conf	/etc/
 COPY	vsftpd.conf			/etc/
 

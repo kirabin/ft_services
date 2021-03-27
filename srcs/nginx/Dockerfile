@@ -2,7 +2,9 @@ FROM	alpine:3.12
 
 RUN		apk update
 RUN		apk add nginx openssl supervisor
+RUN		apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
+COPY	telegraf.conf		/etc/telegraf/
 RUN		mkdir run/nginx
 RUN		openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -subj '/CN=localhost' -nodes
 
