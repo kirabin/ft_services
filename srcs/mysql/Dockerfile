@@ -1,20 +1,24 @@
 FROM	alpine:3.12
 
-RUN		apk update
-RUN		apk add mysql mysql-client openrc supervisor
+RUN		apk update && apk upgrade
+RUN		apk add mysql mariadb mariadb-common mariadb-client mysql-client openrc supervisor
 RUN		apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
-COPY	telegraf.conf		/etc/telegraf/
-COPY	create_wordpress_db.sql	/
+COPY	telegraf.conf			/etc/telegraf/
+# COPY	create_wordpress_db.sql	/
 COPY	my.cnf					/etc/
 COPY	supervisord.conf		/etc/
+COPY	wordpress.sql			/
+COPY	mysql_setup.sh			/
 
 RUN		mkdir			/run/mysqld
 RUN		chmod +x		/run/mysqld
+RUN		chmod +x		/mysql_setup.sh
 
 EXPOSE	3306
 VOLUME	["/var/lib/mysql"]
-CMD		["/usr/bin/supervisord"]
+# CMD		["/usr/bin/supervisord"]
+CMD		./mysql_setup.sh
 
 
 # Links

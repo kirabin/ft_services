@@ -1,4 +1,8 @@
 CREATE USER 'wordpress'@'%' IDENTIFIED BY 'password';
+CREATE USER 'wordpress1'@'%' IDENTIFIED BY 'password';
+CREATE USER 'wordpress2'@'%' IDENTIFIED BY 'password';
 CREATE DATABASE wordpress;
 GRANT ALL PRIVILEGES ON *.* TO 'wordpress'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'wordpress1'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'wordpress2'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
