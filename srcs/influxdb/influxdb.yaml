@@ -19,35 +19,35 @@ spec:
     app: tig
     tier: influx
 ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: influx-pv
-#   labels:
-#     type: local
-# spec:
-#   storageClassName: fast
-#   capacity:
-#     storage: 500Mi
-#   accessModes:
-#     - ReadWriteOnce
-#   hostPath:
-#     path: "/var/lib/influx"
-#   claimRef:
-#     name: influx-pvc
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: influx-pv-claim
-#   labels:
-#     app: influx
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 500Mi
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: influx-pv
+  labels:
+    type: local
+spec:
+  storageClassName: fast
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/lib/influxdb"
+  claimRef:
+    name: influx-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influx-pv-claim
+  labels:
+    app: influx
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -79,10 +79,10 @@ spec:
           name: default-http
         - containerPort: 8808
           name: rpc
-      #   volumeMounts:
-      #   - name: influx-pv
-      #     mountPath: "/var/lib/influx"
-      # volumes:
-      # - name: influx-pv
-      #   persistentVolumeClaim:
-      #     claimName: influx-pv-claim
+        volumeMounts:
+        - name: influx-pv
+          mountPath: "/var/lib/influxdb"
+      volumes:
+      - name: influx-pv
+        persistentVolumeClaim:
+          claimName: influx-pv-claim
