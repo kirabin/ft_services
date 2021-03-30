@@ -15,5 +15,5 @@ RUN		cp					/etc/influxdb.conf /etc/influxdb/
 
 EXPOSE	8086 8088
 # VOLUME	["/var/lib/influx"]
-CMD		["/usr/bin/supervisord"]
-# CMD		./setup.sh
+# CMD		["/usr/bin/supervisord"]
+CMD		./setup.sh

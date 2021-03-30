@@ -11,7 +11,7 @@ COPY	telegraf.conf		/etc/telegraf/
 COPY	supervisord.conf	/etc/
 COPY	nginx.conf			/etc/nginx/
 
-RUN		wget https://wordpress.org/latest.tar.gz
+RUN		wget -q https://wordpress.org/latest.tar.gz
 RUN		tar -xzf latest.tar.gz && rm -rf latest.tar.gz
 RUN		mv wordpress		/var/www/wordpress
 COPY	wp-config.php		/var/www/wordpress

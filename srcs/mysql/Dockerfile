@@ -5,7 +5,6 @@ RUN		apk add mysql mariadb mariadb-common mariadb-client mysql-client openrc sup
 RUN		apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
 COPY	telegraf.conf			/etc/telegraf/
-# COPY	create_wordpress_db.sql	/
 COPY	my.cnf					/etc/
 COPY	supervisord.conf		/etc/
 COPY	wordpress.sql			/
@@ -17,7 +16,6 @@ RUN		chmod +x		/mysql_setup.sh
 
 EXPOSE	3306
 VOLUME	["/var/lib/mysql"]
-# CMD		["/usr/bin/supervisord"]
 CMD		./mysql_setup.sh
 
 

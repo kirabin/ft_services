@@ -15,7 +15,7 @@ COPY	nginx.conf			/etc/nginx/
 # RUN		wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-all-languages.tar.gz
 # RUN		tar -xzf phpMyAdmin-5.0.4-all-languages.tar.gz && rm -rf phpMyAdmin-5.0.4-all-languages.tar.gz
 # RUN		mv phpMyAdmin-5.0.4-all-languages /var/www/phpmyadmin
-RUN		wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.tar.gz
+RUN		wget -q https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.tar.gz
 RUN		tar -xzf phpMyAdmin-5.1.0-all-languages.tar.gz && rm -rf phpMyAdmin-5.1.0-all-languages.tar.gz
 RUN		mv phpMyAdmin-5.1.0-all-languages /var/www/phpmyadmin
 

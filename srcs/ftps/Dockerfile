@@ -10,11 +10,9 @@ COPY	vsftpd.conf			/etc/
 
 RUN		openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -subj '/CN=localhost' -nodes
 
-# RUN		echo "password\npassword" | adduser -h /var/www ftps_user
 RUN		adduser -D -h /var/www ftps_user
 RUN		echo "ftps_user:password" | chpasswd
 RUN		chmod 777 /var/www
-# RUN		chmod 777 /var/www/
 
 EXPOSE	21
 CMD		["/usr/bin/supervisord"]
