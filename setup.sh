@@ -1,4 +1,4 @@
-inikube start --vm-driver=virtualbox --cpus=4 --memory=4G --disk-size=50G
+minikube start --vm-driver=virtualbox --cpus=4 --memory=4G --disk-size=50G
 minikube addons enable metallb
 minikube addons enable storage-provisioner
 
