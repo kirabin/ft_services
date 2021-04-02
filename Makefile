@@ -6,7 +6,7 @@
 #    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/25 11:41:22 by dmilan            #+#    #+#              #
-#    Updated: 2021/04/02 10:26:47 by dmilan           ###   ########.fr        #
+#    Updated: 2021/04/02 10:46:02 by dmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,3 @@ m_install:
 m_start:
 	bash setup.sh
 	minikube dashboard
-
-re:
-	bash re.sh
