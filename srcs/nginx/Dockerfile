@@ -26,10 +26,3 @@ CMD		["/usr/bin/supervisord"]
 
 # Notes
 # - `apk` is analog of `apt-get` of debian:buster
-
-
-# Questions
-# - Why exposing ports ?
-# - Pods vs Deployments
-# - How do we determine which IP range give to metallb?
-# - Why turning off daemon?

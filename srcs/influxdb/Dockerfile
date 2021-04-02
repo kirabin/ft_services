@@ -14,6 +14,5 @@ RUN		chmod +x			/setup.sh
 RUN		cp					/etc/influxdb.conf /etc/influxdb/
 
 EXPOSE	8086 8088
-# VOLUME	["/var/lib/influx"]
-# CMD		["/usr/bin/supervisord"]
+VOLUME	["/var/lib/influxdb"]
 CMD		./setup.sh

@@ -42,10 +42,3 @@ spec:
         name: grafana
         ports:
         - containerPort: 3000
-      #   volumeMounts:
-      #   - name: influx-pv
-      #     mountPath: "/var/lib/influx"
-      # volumes:
-      # - name: influx-pv
-      #   persistentVolumeClaim:
-      #     claimName: influx-pv-claim

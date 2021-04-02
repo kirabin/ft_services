@@ -14,5 +14,5 @@ RUN		mkdir /var/ftps_user
 RUN		adduser -D ftps_user && echo "ftps_user:password" | chpasswd
 RUN		chmod 777 /var/ftps_user
 
-EXPOSE	20 21 20021
+EXPOSE	21 20021
 CMD		["/usr/bin/supervisord"]
