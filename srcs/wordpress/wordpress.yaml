@@ -41,8 +41,6 @@ spec:
       - image: wordpress_image
         imagePullPolicy: Never
         name: wordpress
-        resources:
-          limits:
         ports:
         - containerPort: 5050
           name: wordpress

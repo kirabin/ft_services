@@ -39,8 +39,6 @@ spec:
       containers:
       - image: grafana_image
         imagePullPolicy: Never
-        resources:
-          limits:
         name: grafana
         ports:
         - containerPort: 3000

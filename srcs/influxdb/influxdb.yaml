@@ -71,8 +71,6 @@ spec:
       containers:
       - image: influx_image
         imagePullPolicy: Never
-        resources:
-          limits:
         name: influx
         ports:
         - containerPort: 8806

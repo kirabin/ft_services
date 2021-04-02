@@ -37,7 +37,5 @@ spec:
       - image: phpmyadmin_image
         imagePullPolicy: Never
         name: phpmyadmin
-        resources:
-          limits:
         ports:
         - containerPort: 5000

@@ -39,8 +39,7 @@ spec:
       - name: nginx
         image: nginx_image
         imagePullPolicy: Never
-        resources:
-          limits:
+
         ports:
         - containerPort: 80
         - containerPort: 443

@@ -66,8 +66,6 @@ spec:
       containers:
       - image: mysql_image
         imagePullPolicy: Never
-        resources:
-          limits:
         name: mysql
         ports:
         - containerPort: 3306

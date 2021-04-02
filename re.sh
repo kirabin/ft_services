@@ -17,7 +17,6 @@ docker build -t phpmyadmin_image	./srcs/phpmyadmin/
 docker build -t ftps_image			./srcs/ftps/
 docker build -t influx_image		./srcs/influxdb/
 docker build -t grafana_image		./srcs/grafana/
-# docker run -it --rm grafana_image
 
 docker images
 

@@ -23,11 +23,7 @@ spec:
     - protocol: TCP
       port: 20021
       targetPort: 20021
-      name: ftp-min
-    - protocol: TCP
-      port: 20000
-      targetPort: 20000
-      name: ftp-max
+      name: ftp-passive
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -47,14 +43,10 @@ spec:
       - name: ftps
         image: ftps_image
         imagePullPolicy: Never
-        resources:
-          limits:
         ports:
         - containerPort: 21
           name: ftps
         - containerPort: 20
           name: ftp
-        - containerPort: 20000
-          name: ftp-min
         - containerPort: 20021
-          name: ftp-max
+          name: ftp-passive
