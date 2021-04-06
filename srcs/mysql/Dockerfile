@@ -15,6 +15,8 @@ RUN		chmod +x		/run/mysqld
 RUN		chmod +x		/mysql_setup.sh
 
 EXPOSE	3306
+
+# Useless setting, because volume is not placed in docker container, it's placed in virtual environment.
 VOLUME	["/var/lib/mysql"]
 CMD		./mysql_setup.sh
 
